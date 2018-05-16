@@ -1,7 +1,6 @@
 package com.akalin.projectManagement.resource;
 
-import com.akalin.projectManagement.VersionDetailRepository;
-import com.akalin.projectManagement.models.Version;
+import com.akalin.projectManagement.repository.VersionDetailRepository;
 import com.akalin.projectManagement.models.VersionDetail;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -52,5 +51,12 @@ public class VersionDetailResource {
     public void deleteAll() {
 
         repository.deleteAll();
+    }
+
+    @RequestMapping(value = "/update/{id}",method = RequestMethod.PUT)
+    public VersionDetail updateVersion(@PathVariable Long id, @RequestBody VersionDetail versionDetail ){
+        saveVersionDetail(versionDetail);
+        return versionDetail;
+
     }
 }

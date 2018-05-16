@@ -1,6 +1,6 @@
 package com.akalin.projectManagement.resource;
 
-import com.akalin.projectManagement.ProjectRepository;
+import com.akalin.projectManagement.repository.ProjectRepository;
 import com.akalin.projectManagement.models.Project;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -47,6 +47,13 @@ public class ProjectResource {
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public void deleteAll() {
          repository.deleteAll();
+    }
+
+    @RequestMapping(value = "/update/{id}",method = RequestMethod.PUT)
+    public Project updateVersion(@PathVariable Long id, @RequestBody Project project){
+        saveProject(project);
+        return project;
+
     }
 
 }
