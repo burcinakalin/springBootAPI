@@ -1,11 +1,11 @@
 package com.akalin.projectManagement.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Project {
@@ -18,6 +18,8 @@ public class Project {
     @NotNull
     @Size(max = 255)
     private String description;
+    @OneToMany
+    private Set<Version> version = new HashSet<Version>();
 
     public Long getId() {
         return id;
@@ -46,7 +48,12 @@ public class Project {
         return this;
     }
 
+    public Set<Version> getVersion() {
+        return version;
+    }
 
-
-
+    public Project setVersion(Set<Version> version) {
+        this.version = version;
+        return this;
+    }
 }
