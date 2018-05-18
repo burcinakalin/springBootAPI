@@ -19,7 +19,7 @@ public class Version {
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
-    @OneToMany
+    @OneToMany(mappedBy = "version")
     private Set<VersionDetail> versionDetail  = new HashSet<VersionDetail>();
 
 

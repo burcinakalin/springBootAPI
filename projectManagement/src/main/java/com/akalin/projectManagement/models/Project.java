@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table (name = "project")
 public class Project {
     @Id
     @GeneratedValue
@@ -18,7 +19,7 @@ public class Project {
     @NotNull
     @Size(max = 255)
     private String description;
-    @OneToMany
+    @OneToMany(mappedBy = "project")
     private Set<Version> version = new HashSet<Version>();
 
     public Long getId() {
