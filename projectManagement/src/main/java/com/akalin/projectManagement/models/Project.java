@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table (name = "project")
+@Table (name = "projects")
 public class Project {
     @Id
     @GeneratedValue
@@ -19,9 +19,9 @@ public class Project {
     @NotNull
     @Size(max = 255)
     private String description;
-    @OneToMany(mappedBy = "project")
+   /* @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "project")
     private Set<Version> version = new HashSet<Version>();
-
+*/
     public Long getId() {
         return id;
     }
@@ -48,7 +48,7 @@ public class Project {
         this.description = description;
         return this;
     }
-
+/*
     public Set<Version> getVersion() {
         return version;
     }
@@ -57,4 +57,5 @@ public class Project {
         this.version = version;
         return this;
     }
+    */
 }
